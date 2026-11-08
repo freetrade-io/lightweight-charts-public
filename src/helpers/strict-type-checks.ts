@@ -22,7 +22,7 @@ export function merge(dst: Record<string, any>, ...sources: Record<string, any>[
 				dst[i] = src[i];
 			} else {
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-				merge(dst[i], src[i]);
+				!["__proto__", "constructor", "prototype"].includes(i) && merge(dst[i], src[i]);
 			}
 		}
 	}
